@@ -30,3 +30,23 @@ it should use today’s date to get the month and year.
 import sys
 import calendar
 from datetime import datetime
+# use try statements to see if the needed arguments were passed in,
+# and if not the default of today's month and year will be passed in.
+try:
+  month = int(sys.argv[1])
+except:
+  month = datetime.today().month
+
+try:
+  year = int(sys.argv[2])
+except:
+  year = datetime.today().year
+
+# inform the user of the desired input if too many arguments are passed in.
+if len(sys.argv) > 3:
+  print("Please only pass two arguments, a month and a year, as integers:")
+  print("i.e. `14_cal.py [month] [year]`")
+else:
+  # print the calender
+  myCal = calendar.TextCalendar(6)
+  myCal.prmonth(year, month)
